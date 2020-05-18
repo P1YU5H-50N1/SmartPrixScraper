@@ -14,7 +14,13 @@ async function SpecsExtractor(){
         if(i<2){
             console.log(links[x]); 
             console.log(x);
-           // await axios.get(links[x])
+            await axios.get(links[x])
+                        .then((response)=>{
+                            let frag = JSDOM.fragment(String(response.data));
+                            
+                        }).catch((error)=>{
+                            console.log(error);
+                        })
             i++;
         }else{
             break;
