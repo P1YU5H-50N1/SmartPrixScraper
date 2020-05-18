@@ -7,8 +7,6 @@ const { JSDOM } = jsdom;
 let pg = 1;
 let spUrl= "https://www.smartprix.com/laptops/exclude_global-exclude_out_of_stock-exclude_upcoming-stock?uq=1&page="+pg;
 
-links.three = 'alsdk';
-fs.writeFileSync('LaptopLinks.json',JSON.stringify(links))
 
 axios.get(spUrl)
   .then(function (response) {
@@ -22,15 +20,14 @@ axios.get(spUrl)
      if(frag.querySelector(".info h2")){
       console.log(frag.querySelector(".info h2").textContent);
       console.log(frag.querySelector(".info h2 a").getAttribute("href"));
+      links[`${frag.querySelector(".info h2").textContent}`] = "https://www.smartprix.com/" + frag.querySelector(".info h2 a").getAttribute("href");
       frag.querySelector(".info h2").remove();
      }else{
        break;
      }
    }
-    // fs.appendFile("text.txt",String(response.data),err=>{
-    //     //console.log(err);
-    // });
    
+  fs.writeFileSync('LaptopLinks.json',JSON.stringify(links));
   })
   .catch(function (error) {
     // handle error
