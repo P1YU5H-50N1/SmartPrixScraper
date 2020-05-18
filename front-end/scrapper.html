@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+        
+        let pg = 1;
+        let spUrl= "https://www.smartprix.com/laptops/exclude_global-exclude_out_of_stock-exclude_upcoming-stock?uq=1&page="+pg;
+
+        axios.get(spUrl).then(()=>{
+            document.write(response.data)
+        })
+        //async document.write( await );
+        
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
