@@ -13,7 +13,7 @@ fs.writeFileSync('LaptopLinks.json',JSON.stringify(links))
 axios.get(spUrl)
   .then(function (response) {
     // handle success
-   let dom = new JSDOM();
+   //let dom = new JSDOM();
    let frag = JSDOM.fragment(String(response.data));
    //console.log(dom);
 
