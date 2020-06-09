@@ -31,18 +31,26 @@ async function SpecsExtractor(){
                             price = parseInt(price);
                             console.log(price);
                             //inserting name and price
-                            // specs[`${i}`]= {};
-                            // specs[`${i}`]["Name"] = x;
-                            // specs[`${i}`]["Price"] = price;
-                            for(let i = 0;;i++){
+                            specs[`${i}`]= {};
+                            specs[`${i}`]["Name"] = x;
+                            specs[`${i}`]["Price"] = price;
+                            specs[`${i}`]["Links"] = links[x];
+                            let highLvlSpec;
+                            for(let j = 0;;j++){
                                 if(frag.querySelector(".specs-table tr")){
                                     if(frag.querySelector(".specs-table tr") == frag.querySelector(".specs-table .heading")){
                                         console.log("|----------------------------------------|")
                                         console.log("heading :"+frag.querySelector(".specs-table tr").textContent);
-                                        
+                                        //storing high level specs or headings as on smartprix
+                                        highLvlSpec = frag.querySelector(".specs-table tr").textContent;
+                                        specs[`${i}`][`${highLvlSpec}`] = {};
+
                                     } else if (frag.querySelector(".specs-table tr .bold")){
                                         console.log(frag.querySelector(".specs-table tr .bold").textContent + " : " + frag.querySelector(".specs-table tr .bold ~ td").textContent);
                                         //console.log("features : " + frag.querySelector(".specs-table tr .bold ~ td").textContent);
+                                        
+                                        //storing specs line by line
+                                        specs[`${i}`][`${highLvlSpec}`][`${frag.querySelector(".specs-table tr .bold").textContent}`] = frag.querySelector(".specs-table tr .bold ~ td").textContent;
                                     }
                                     //console.log(frag.querySelector(".specs-table tr ").textContent)
                                     frag.querySelector(".specs-table tr").remove();
@@ -51,7 +59,7 @@ async function SpecsExtractor(){
                                     break;
                                 }
                             }
-                            
+                            console.log(JSON.stringify(specs));
 
                             fs.writeFileSync('Specs.json',JSON.stringify(specs));
                             
