@@ -2,8 +2,8 @@ const axios = require('axios');
 const fs = require('fs');
 const jsdom = require('jsdom');
 const{JSDOM} = jsdom;
-const links = require('./LaptopLinks.json');
-const specs = require('./Specs.json');
+const links = require('./data/LaptopLinks.json');
+const specs = require('./data/Specs.json');
 
 //gives count for iteration
 let c = Object.keys(links).length;
@@ -77,3 +77,4 @@ async function SpecsExtractor(){
 }
 
 SpecsExtractor();
+module.exports = SpecsExtractor;

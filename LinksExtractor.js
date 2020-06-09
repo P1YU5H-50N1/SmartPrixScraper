@@ -1,6 +1,6 @@
 const axios = require('axios');
 const fs = require('fs');
-const links = require('./LaptopLinks.json');
+const links = require('./data/LaptopLinks.json');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 //Scrapes links to specifications pages
@@ -36,7 +36,7 @@ async function LinksExtractor(){
         }
       }
       
-      fs.writeFileSync('LaptopLinks.json',JSON.stringify(links));
+      fs.writeFileSync('data/LaptopLinks.json',JSON.stringify(links));
       pg = pg + 1;
       })
       .catch(function (error) {
@@ -51,3 +51,4 @@ async function LinksExtractor(){
 }
 
 LinksExtractor();
+module.exports = LinksExtractor;
