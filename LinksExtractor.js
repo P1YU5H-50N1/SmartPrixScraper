@@ -27,8 +27,6 @@ async function LinksExtractor(){
         //loop save an item and delete it to get next element as jsdom give only first element 
       for(let i=0;; i++){
         if(frag.querySelector(".info h2")){
-          //console.log(frag.querySelector(".info h2").textContent);
-        // console.log(frag.querySelector(".info h2 a").getAttribute("href"));
           links[`${frag.querySelector(".info h2").textContent}`] = "https://www.smartprix.com" + frag.querySelector(".info h2 a").getAttribute("href");
           frag.querySelector(".info h2").remove();
         }else{
