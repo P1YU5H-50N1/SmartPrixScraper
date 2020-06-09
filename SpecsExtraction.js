@@ -51,7 +51,7 @@ async function SpecsExtractor(){
                                     break;
                                 }
                             }
-                            fs.writeFileSync('Specs.json',JSON.stringify(specs));
+                            fs.writeFileSync('data/Specs.json',JSON.stringify(specs));
                             
 
                            
