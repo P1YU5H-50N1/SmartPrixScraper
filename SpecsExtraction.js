@@ -35,12 +35,17 @@ async function SpecsExtractor(){
                             // specs[`${i}`]["Name"] = x;
                             // specs[`${i}`]["Price"] = price;
                             for(let i = 0;;i++){
-                                if(frag.querySelector(".specs-table tr .bold")){
-                                   console.log(frag.querySelector(".specs-table tr .bold").textContent);
-                                   console.log(frag.querySelector(".specs-table tr .bold ~ td").textContent)
-                                   console.log('|-------------------------------------|')
-                                   frag.querySelector(".specs-table tr .bold ~ td").remove();
-                                   frag.querySelector(".specs-table tr .bold").remove();
+                                if(frag.querySelector(".specs-table tr")){
+                                    if(frag.querySelector(".specs-table tr") == frag.querySelector(".specs-table .heading")){
+                                        console.log("|----------------------------------------|")
+                                        console.log("heading :"+frag.querySelector(".specs-table tr").textContent);
+                                        
+                                    } else if (frag.querySelector(".specs-table tr .bold")){
+                                        console.log(frag.querySelector(".specs-table tr .bold").textContent + " : " + frag.querySelector(".specs-table tr .bold ~ td").textContent);
+                                        //console.log("features : " + frag.querySelector(".specs-table tr .bold ~ td").textContent);
+                                    }
+                                    //console.log(frag.querySelector(".specs-table tr ").textContent)
+                                    frag.querySelector(".specs-table tr").remove();
                                   
                                 }else{
                                     break;
